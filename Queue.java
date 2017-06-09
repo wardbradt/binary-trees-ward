@@ -1,5 +1,11 @@
 /**
- * Created by wardbradt on 4/6/17.
+ * An object of type `Queue` follows a "first-in first-out" convention:
+ * The element that has been in the <code>Queue</code> for the longest duration will be at the front of the
+ * <code>Queue</code> and the newest element will be at the back.
+ * Each `Queue` holds a reference to a `Queue` object `next`, thus providing the connections for this data structure.
+ *
+ * Created by Ward Bradt on 04/06/17.
+ * Revised on 06/08/17.
  */
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -17,7 +23,7 @@ public class Queue<T> implements Iterable<T> {
         contents = object;
         next = null;
     }
-
+    
     public Iterator<T> iterator() {
         Iterator<T> it = new Iterator<T>() {
 
@@ -27,9 +33,9 @@ public class Queue<T> implements Iterable<T> {
             }
 
             /**
-             * Get the element at the front of the queue, and remove it from the queue.
+             * Get the element at the front of the <code>Queue</code>, and remove it from the <code>Queue</code>.
              *
-             * @return the top element of the stack
+             * @return the front element of the <code>Queue</code>
              */
             @Override
             public T next() {
@@ -53,9 +59,9 @@ public class Queue<T> implements Iterable<T> {
     }
 
     /**
-     * Get the number of nodes in the queue.
+     * Gets the number of <code>Node</code>s, or elements, in the <code>Queue</code>
      *
-     * @return the number of nodes in the queue
+     * @return the number of <code>Node</code>s in the <code>Queue</code>
      */
     public int size() {
         // start at 1, because the host object will always be a node
@@ -72,19 +78,19 @@ public class Queue<T> implements Iterable<T> {
     }
 
     /**
-     * Tests if the Queue has no elements.
+     * Tests if the <code>Queue</code> has elements.
      *
-     * @return if the queue is empty.
+     * @return if the <code>Queue</code> is empty.
      */
     public boolean isEmpty() {
         return contents == null && next == null;
     }
 
     /**
-     * Add T o to the end of the queue.
+     * Add <code>T o</code> to the end of the <code>Queue</code>.
      *
-     * @param o the T object to be added to the queue
-     * @return true if o is added.
+     * @param o the <code>T object</code> to be added to the <code>Queue</code>
+     * @return if <code>o</code> was added
      */
     public boolean add(T o) {
         /*
@@ -111,41 +117,33 @@ public class Queue<T> implements Iterable<T> {
     }
 
     /**
-     * Get the element at the front of the queue, without removing it.
+     * Get the element at the front of the <code>Queue</code> without removing it.
+     * A replacement for a <code>getContents()</code>
      *
-     * @return the front element of the stack
+     * @return the front element of the <code>Queue</code>
      */
     public T peek() {
         return contents;
     }
 
-    /**
-     * Get the next node in the queue.
-     *
-     * @return the next node in the queue.
-     */
     public Queue<T> getNext() {
         return next;
     }
 
-    public T getContents() {
-        return contents;
-    }
-
     /**
-     * Set the next node in the queue.
-     * <i>This will, if used improperly, remove all future elements!</i>
+     * Set the next <code>Node</code> in the queue.
+     * <b>Warning:</b>This will, if used improperly, remove all future elements!
      *
-     * @param next the node to set as the next node in the queue.
+     * @param next the <code>Node</code> to set as the next node in the <code>Queue</code>
      */
     private void setNext(Queue<T> next) {
         this.next = next;
     }
     
     /**
-     * Append a queue to the end of another queue.
+     * Append a <code>Queue</code> to the end of another <code>Queue</code>.
      *
-     * @param other is the queue to append at the end of the original queue.
+     * @param other the <code>Queue</code> to append at the end of the original <code>Queue</code>.
      */
     public boolean addQueue(Queue<T> other) {
     	while (other.contents != null)

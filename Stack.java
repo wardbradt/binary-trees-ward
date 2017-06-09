@@ -2,9 +2,10 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * An implementation of the 'stack' data structure
- * <p>
- * Author: Tony Tan, Jimmy Pham, Ward Bradt, and Miles McCain
+ * An implementation of the 'Stack' data structure.
+ * Each Stack stores a reference to a <code>Stack next</code> which represents the next, or above, node
+ * <br>
+ * Authors: Tony Tan, Jimmy Pham, Ward Bradt, and Miles McCain
  * Date: Created March 28th
  *       Revised June 8, 2017
  * Course: CSC630 Data Structures and Algorithms
@@ -15,9 +16,8 @@ public class Stack<T> implements Iterable<T> {
     private Stack<T> next;
 
     /**
-     * Create a new stack, with 'null' at the top.
-     * <i>Note: a subsequent 'push' will replace the top object 'null'.
-     * Dr. Z approved of this (somewhat strange) functionality in class.</i>
+     * Create a new <code>Stack</code>, with <code>null</code> at the top.
+     * <i>Note: a subsequent 'push' will replace the top object 'null'.</i>
      */
     public Stack() {
         contents = null;
@@ -30,9 +30,9 @@ public class Stack<T> implements Iterable<T> {
     }
 
     /**
-     * Check whether the stack is empty.
+     * Check whether the <code>Stack</code> is empty.
      *
-     * @return whether the stack is empty
+     * @return if the <code>Stack</code> is empty
      */
     public boolean empty() {
         return contents == null && next == null;
@@ -88,7 +88,7 @@ public class Stack<T> implements Iterable<T> {
 
     /**
      * Find the 1-based index of the given element.
-     * <i>Returns -1 if the item is not found in the stack.</i>
+     * <i>Returns -1 if the item is not found in the <code>Stack</code>.</i>
      *
      * @param o the element to search for
      * @return the index of the given element
@@ -108,9 +108,9 @@ public class Stack<T> implements Iterable<T> {
     }
 
     /**
-     * Get the number of elements in the stack.
+     * Get the number of elements in the <code>Stack</code>.
      *
-     * @return the number of elements in the stack.
+     * @return the number of elements in the <code>Stack</code>.
      */
     public int size() {
         int elements = 1;
@@ -124,17 +124,17 @@ public class Stack<T> implements Iterable<T> {
     }
 
     /**
-     * Create an array from the elements of the stack, with the top element in
+     * Create an array from the elements of the <code>Stack</code>, with the top element in
      * position 0.
      * <p>
-     * Note: this method is not fully optimized, as it requires the entire traversal of the stack twice
-     * (once to get the size, and another time to populate the array).
+     * <b>Note:</b> this method is not fully optimized, as it requires the entire traversal of the <code>stack</code>
+     * twice (once to get the size, and another time to populate the array).
      * <p>
      * Data conventions note: this is not a perfect 'translation,' so to speak, because
-     * a stack is fundamentally different from an array. Nevertheless, an array is
+     * a <code>Stack</code> is fundamentally different from an array. Nevertheless, an array is
      * much more suitable for native (for (e : q){}) iteration.
      *
-     * @return an array version of the stack's elements
+     * @return an array version of the <code>Stack</code>'s elements
      */
     public Object[] toArray() {
         Object[] array = new Object[size()];
@@ -147,9 +147,9 @@ public class Stack<T> implements Iterable<T> {
     }
 
     /**
-     * Create a printable human-readable String which represents the stack.
+     * Creates a printable human-readable <code>String</code> which represents the <code>Stack</code>.
      *
-     * @return a printable String which represents the stack
+     * @return a printable <code>String</code> which represents the <code>Stack</code>
      */
     public String toString() {
         String serialized = "[";

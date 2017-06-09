@@ -64,7 +64,7 @@ public class HeapTest {
         assertEquals(new Integer(32), extTester.getContents());
 
         Queue<Integer> depthQueue = extTester.iterate();
-        Integer previous = depthQueue.getContents();
+        Integer previous = depthQueue.peek();
         // Check that they are still in descending order
         for (Integer i : depthQueue) {
             assertTrue(i.compareTo(previous) <= 0);
@@ -91,7 +91,7 @@ public class HeapTest {
 
         Queue<Integer> depthQueue = depthTester.iterate();
         // So that previous is one bigger than the first element in this Queue, add 1.
-        Integer previous = depthQueue.getContents() + 1;
+        Integer previous = depthQueue.peek() + 1;
         // Check that they are in descending order
         while (depthQueue.iterator().hasNext()) {
             assertTrue(depthQueue.peek().compareTo(previous) < 0);
@@ -107,7 +107,7 @@ public class HeapTest {
         depthTester2.add("foobar3");
 
         Queue<String> dQueue = depthTester2.iterate();
-        String prev = dQueue.getContents();
+        String prev = dQueue.peek();
         dQueue.iterator().next();
         // Check that they are in descending order
         while (dQueue.iterator().hasNext()) {

@@ -1,10 +1,12 @@
 /**
- * A basic implementation of a LinkedList slightly repurposed to be the superclass of a Queue.
- * Note that the generic type `T` is being used here.
- *
- * <p>
- * Author: the one group of 4
- * Date: March 22, 2017
+ * A basic implementation of a <code>LinkedList</code> repurposed to be the superclass of a <code>Queue</code>.
+ * Note that the generic type <code>T</code> is being used here.
+ * <br>
+ * Authors: Tony Tan, Jimmy Pham, Ward Bradt, and Miles McCain
+ * Date Created: 03/22/17
+ * Revision Author: Ward Bradt
+ * Revision #1: 04/05/17
+ * Revision #2: 06/08/17
  * Course: CSC630 Data Structures and Algorithms
  */
 
@@ -12,21 +14,24 @@ public class LinkedList<T> {
     private T contents;
     private LinkedList<T> next;
 
+    /**
+     * "Root contents" constructor
+     * @param object the contents of the root node
+     */
     public LinkedList(T object) {
         contents = object;
         next = null;
     }
 
-
     /**
-     * Add the given object to the end of the linked list.
-     * <i>If the linked list is of size '1' and its only
-     * node has no data, the given object will be inserted
-     * at index 0, and the LinkedList's size will remain
+     * Add the given <code>Object</code> to the end of the <code>LinkedList</code>.
+     * <i>If the <code>LinkedList</code> is of size 1 and its only
+     * <code>Node</code> has no data, the given <code>Object</code> will be inserted
+     * at index 0, and the <code>LinkedList</code>'s size will remain
      * the same.</i>
      *
-     * @param o the object to add
-     * @return whether the object was added successfully
+     * @param o the <code>Object</code> to add
+     * @return whether the <code>Object</code> was added successfully
      */
     public boolean add(T o) {
         /*
@@ -54,14 +59,14 @@ public class LinkedList<T> {
     }
 
     /**
-     * Add the given object at the given index.
+     * Add the given <code>Object</code> at the given index.
      * <i>Index '0' would insert the item as the
      * first element in the list.</i>
      *
-     * @param index the index at which to insert the object
+     * @param index the index at which to insert the <code>Object</code>
      * @param o     the object to insert
      * @return whether the insertion was successful
-     * @throws IndexOutOfBoundsException if no object is present at the given index
+     * @throws IndexOutOfBoundsException if no <code>Object</code> is present at the given index
      */
     public boolean add(int index, T o) {
         if (index < 0) {
@@ -94,11 +99,11 @@ public class LinkedList<T> {
     }
 
     /**
-     * Get the object at the given index.
+     * Get the <code>Object</code> at the given index.
      *
-     * @param index the index of the requested object
+     * @param index the index of the requested <code>Object</code>
      * @return the requested object
-     * @throws IndexOutOfBoundsException if outside the bounds of the LinkedList
+     * @throws IndexOutOfBoundsException if outside the bounds of the <code>LinkedList</code>
      */
     public T get(int index) throws IllegalArgumentException {
         if (index < 0) throw new IndexOutOfBoundsException("No negative indices!");
@@ -113,10 +118,10 @@ public class LinkedList<T> {
     }
 
     /**
-     * Check whether the linked list contains the given object.
+     * Check whether the <code>LinkedList</code> contains the given <code>Object</code>.
      *
-     * @param object the object to search for
-     * @return whether or not the given object is in the LinkedList
+     * @param object the <code>Object</code> to search for
+     * @return whether or not the given object is in the <code>LinkedList</code>
      */
     public boolean contains(T object) {
         // indexOf returns -1 if T object is not found in this.
@@ -124,13 +129,13 @@ public class LinkedList<T> {
     }
 
     /**
-     * Return the first index of the given object in the linked list.
+     * Return the first index of the given <code>Object</code> in the <code>LinkedList</code>.
      * <p>
-     * <i>Node: equivalency is checked using .equals(), allowing for
-     * more dynamic checking (i.e. Integer(4) will match non-wrapped '4'). </i>
+     * <i>Node: equivalency is checked using <code>equals(T object)</code>, allowing for
+     * more dynamic checking (i.e. <code>Integer(4)</code> will match non-wrapped '4'). </i>
      *
-     * @param object the object to search for
-     * @return the index of the given object, returns -1 if not found.
+     * @param object the <code>Object</code> to search for
+     * @return the index of the given <code>Object</code>, returns -1 if not found.
      */
     public int indexOf(T object) {
         int nodeIndex = 0;
@@ -146,7 +151,7 @@ public class LinkedList<T> {
     }
 
     /**
-     * A 'null-safe' equivalence checker. Relies on Java's built-in Object.equals() for non-null object1.
+     * A 'null-safe' equivalence checker. Relies on Java's built-in <code>Object.equals()</code> for non-null object1.
      *
      * @param object1 the first object to compare
      * @param object2 the second object to compare
@@ -160,7 +165,7 @@ public class LinkedList<T> {
     }
 
     /**
-     * Removes all nodes in the list.
+     * Removes all <code>Node</code>s in the list.
      */
     public void clear() {
         next = null;
@@ -168,13 +173,13 @@ public class LinkedList<T> {
     }
 
     /**
-     * Removes the given node from the LinkedList.
-     * Previous and later nodes remain intact, however
-     * later nodes indices will drop by 1 (because
-     * there is one less node before them).
+     * Removes the given <code>Node</code> from the <code>LinkedList</code>.
+     * Previous and later <code>Node</code>s remain intact, however
+     * later <code>Node</code>s indices will drop by 1 (because
+     * there is one less <code>Node</code> before them).
      *
-     * @param index the index of the node to remove.
-     * @return the object which was removed.
+     * @param index the index of the <code>Node</code> to remove.
+     * @return the <code>contents</code> of the <code>Node</code> which was removed.
      */
     public T remove(int index) {
         if (index < 0) throw new IndexOutOfBoundsException("No negative indices!");
@@ -189,9 +194,12 @@ public class LinkedList<T> {
             }
             return removed;
         }
-        LinkedList<T> iteratingNode = this; // this is the node with which we iterate over the chain.
-        LinkedList<T> previousNode = null; // the node right before 'iteratingNode'
-        int iteratingNodeIndex = 0; // the index of the iterating node in the 'chain'
+        // this is the node with which we iterate over the chain.
+        LinkedList<T> iteratingNode = this;
+        // the node right before 'iteratingNode'
+        LinkedList<T> previousNode = null;
+        // the index of the iterating node in the 'chain'
+        int iteratingNodeIndex = 0;
         while (iteratingNodeIndex < index) {
             if (iteratingNode.getNext() == null) {
                 throw new IndexOutOfBoundsException("No such index!");
@@ -207,7 +215,7 @@ public class LinkedList<T> {
     }
 
     /**
-     * Returns a String output of the list, suitable for printing.
+     * Returns a <code>String</code> output of the <code>LinkedList</code> suitable for printing.
      * Stylized to print in the same format as an array
      */
     public String toString() {
@@ -227,9 +235,9 @@ public class LinkedList<T> {
     }
 
     /**
-     * Get the number of nodes in the LinkedList.
+     * Get the number of <code>Node</code>s in the <code>LinkedList</code>.
      *
-     * @return the number of nodes in the LinkedList
+     * @return the number of nodes in the <code>LinkedList</code>
      */
     public int size() {
         int nodes = 1; // start at 1, because the host object will always be a node
@@ -241,42 +249,23 @@ public class LinkedList<T> {
         return nodes;
     }
 
-
-    // variable encapsulation
-
-    /**
-     * Get the contents of the current node.
-     *
-     * @return the contents of the current node
-     */
     public T getContents() {
         return contents;
     }
 
-    /**
-     * Set the contents of the current node.
-     * This does not affect any nodes later in the linked list.
-     *
-     * @param contents the new contents of the current node
-     */
     private void setContents(T contents) {
         this.contents = contents;
     }
 
-    /**
-     * Get the next node in the linked list.
-     *
-     * @return the next node in the linked list
-     */
     public LinkedList<T> getNext() {
         return next;
     }
 
     /**
      * Set the next node in the linked list.
-     * <i>This will, if used improperly, remove all future elements!</i>
+     * <b>Warning:</b>This will, if used improperly, remove all future elements!
      *
-     * @param next the node to set as the next node in the linked list
+     * @param next the node to set as the next node in the <code>LinkedList</code>
      */
     private void setNext(LinkedList<T> next) {
         this.next = next;

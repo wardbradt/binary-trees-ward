@@ -13,7 +13,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T>{
 
     /**
      * Adds <code>T item</code> to the <code>BinarySearchTree</code> in the correct position,
-     * following the condition that for any position/ Root x,
+     * following the condition that for any position/ root x,
      * the right branch is always bigger than the left branch.
      * Uses the recursive helper method addHelper() when the
      * root != null
@@ -73,9 +73,8 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T>{
     }
 
     /**
-     * Overwrites the removeHelper method from BinaryTree. Makes
-     * root.right the new root and reformats the tree so it is
-     * still sorted.
+     * Overwrites the <code>removeHelper</code> method from <code>BinaryTree</code>. Makes
+     * <code>root.right</code> the new root and reformats the tree so it is still sorted.
      *
      * @param removed the Node to remove from the tree
      */

@@ -197,8 +197,5 @@ public class BinaryTreeTest {
         assertEquals("foobar3", str[5]);
         assertEquals("foobar6", str[6]);
         assertEquals("foobar7", str[7]);
-       }
-
-    public static void main(String[] args) {
     }
 }
