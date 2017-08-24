@@ -36,8 +36,6 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T>{
         return addHelper(parent, item);
     }
 
-    // Citations:
-    // http://algs4.cs.princeton.edu/32bst/BST.java.html
     public boolean addHelper(Node<T> parent, T item) {
         int cmp = item.compareTo(parent.getContents());
         // If item is smaller comparatively, add it to the left.
